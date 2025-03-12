@@ -1,6 +1,6 @@
-# Chain Reaction Game Server
+# Chain Rxn Game Server
 
-This directory contains information about the WebSocket server implementation required for the Chain Reaction game.
+This directory contains information about the WebSocket server implementation required for the Chain Rxn game.
 
 ## Server Implementation Requirements
 
@@ -34,7 +34,7 @@ The server needs to implement the following WebSocket events:
 
 The server should:
 1. Maintain game state for each active game
-2. Process game moves according to Chain Reaction rules
+2. Process game moves according to Chain Rxn rules
 3. Validate player moves 
 4. Handle player disconnections gracefully
 5. Clean up games that are abandoned

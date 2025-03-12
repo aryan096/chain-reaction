@@ -1,10 +1,10 @@
-# Chain Reaction Game Server
+# Chain Rxn Game Server
 
-WebSocket server for the Chain Reaction multiplayer game.
+WebSocket server for the Chain Rxn multiplayer game.
 
 ## Overview
 
-This server powers the multiplayer functionality of the Chain Reaction game using WebSockets. It manages game state, player connections, and game logic.
+This server powers the multiplayer functionality of the Chain Rxn game using WebSockets. It manages game state, player connections, and game logic.
 
 ## Development
 
@@ -69,5 +69,5 @@ This runs the compiled JavaScript from the `dist` directory.
 The server consists of three main TypeScript files:
 
 1. `server.ts` - The main WebSocket server that handles client connections and game event routing
-2. `gameLogic.ts` - Implements the Chain Reaction game rules and state management
+2. `gameLogic.ts` - Implements the Chain Rxn game rules and state management
 3. `types.ts` - TypeScript type definitions shared across the server

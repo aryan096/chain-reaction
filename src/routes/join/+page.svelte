@@ -19,7 +19,7 @@
   }
 </script>
 
-<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-900 to-purple-900">
+<div class="flex flex-col pt-12 md:pt-0 lg:pt-0 items-center justify-start md:justify-center lg:justify-center min-h-screen bg-gray-900">
   <h1 class="text-4xl font-bold text-white mb-8">Join Game</h1>
   
   <div class="bg-white p-8 rounded-lg shadow-lg w-96">
@@ -49,7 +49,7 @@
       </button>
       
       <button 
-        class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded"
         on:click={handleJoinGame}
         disabled={!gameCode}
       >

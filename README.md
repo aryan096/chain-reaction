@@ -1,6 +1,8 @@
-# Chain Reaction Game
+# Chain Rxn
 
-A multiplayer Chain Reaction game built with SvelteKit, WebSockets, and TailwindCSS.
+A multiplayer Chain Rxn game built with SvelteKit, WebSockets, and TailwindCSS.
+
+This project is a web implementation of the game Chain Rxn.
 
 ## Getting Started
 
@@ -53,7 +55,7 @@ npm run build:server
 
 ## Game Mechanics
 
-Chain Reaction is a multiplayer strategy game where:
+Chain Rxn is a multiplayer strategy game where:
 
 1. Players take turns placing atoms in cells
 2. When a cell reaches its capacity, it "explodes" and distributes atoms to adjacent cells

@@ -23,7 +23,7 @@
   }
 </script>
 
-<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-900 to-purple-900">
+<div class="flex flex-col pt-12 md:pt-0 lg:pt-0 items-center justify-start md:justify-center lg:justify-center min-h-screen bg-gray-900">
   <h1 class="text-4xl font-bold text-white mb-8">Create Game</h1>
   
   <div class="bg-white p-8 rounded-lg shadow-lg w-96">
@@ -88,7 +88,7 @@
       </button>
       
       <button 
-        class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded flex items-center"
+        class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded flex items-center"
         on:click={handleCreateGame}
         disabled={isCreating}
       >

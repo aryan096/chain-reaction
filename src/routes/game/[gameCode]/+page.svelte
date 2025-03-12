@@ -49,10 +49,10 @@
   }
 </script>
 
-<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-900 to-purple-900 p-4">
+<div class="flex flex-col pt-12 md:pt-0 lg:pt-0 items-center justify-start md:justify-center lg:justify-center min-h-screen bg-gray-900 p-4">
   <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6">
     <div class="flex justify-between items-center mb-4">
-      <h1 class="text-2xl font-bold">Chain Reaction</h1>
+      <h1 class="text-2xl font-bold">Chain Rxn</h1>
       <div class="text-sm bg-gray-100 px-3 py-1 rounded-md">
         Game Code: <span class="font-bold">{gameCode}</span>
       </div>
@@ -81,11 +81,11 @@
         <PlayerInfo {players} {currentPlayer} />
         
         {#if gameOver && winner}
-          <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 mt-4">
+          <div class="bg-stone-100 border-l-4 border-stone-500 p-4 mt-4">
             <p class="font-bold">Game Over!</p>
             <p>Winner: {winner.name}</p>
             <button 
-              class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full mt-4"
+              class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded w-full mt-4"
               on:click={handleNewGame}
             >
               New Game
@@ -94,7 +94,7 @@
         {/if}
         
         <button 
-          class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded w-full mt-4"
+          class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-4 rounded w-full mt-4"
           on:click={handleLeaveGame}
         >
           Leave Game

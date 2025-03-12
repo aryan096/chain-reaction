@@ -123,7 +123,7 @@
   }
 </script>
 
-<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-900 to-purple-900">
+<div class="flex flex-col pt-12 md:pt-0 lg:pt-0 items-center justify-start md:justify-center lg:justify-center min-h-screen bg-gray-900">
   <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
     <h1 class="text-3xl font-bold mb-6 text-center">Game Lobby</h1>
     
@@ -166,7 +166,7 @@
               placeholder="Enter your name"
             />
             <button 
-              class="bg-green-500 hover:bg-green-600 text-white py-1 px-2 rounded-md text-sm flex items-center"
+              class="bg-teal-500 hover:bg-teal-600 text-white py-1 px-2 rounded-md text-sm flex items-center"
               on:click={savePlayerName}
               disabled={isSavingName}
             >
@@ -187,7 +187,7 @@
             </button>
           </div>
           {#if nameError}
-            <p class="text-red-500 text-sm mt-1">{nameError}</p>
+            <p class="text-rose-500 text-sm mt-1">{nameError}</p>
           {/if}
         </div>
       {:else}
@@ -223,7 +223,7 @@
     
     <div class="flex justify-between">
       <button 
-        class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+        class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-4 rounded"
         on:click={handleLeaveGame}
         disabled={isStarting}
       >
@@ -232,7 +232,7 @@
       
       {#if isHost}
         <button 
-          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center min-w-32"
+          class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center min-w-32"
           on:click={handleStartGame}
           disabled={players.length < 2 || isStarting}
         >
