@@ -20,7 +20,9 @@ let socket: ExtendedWebSocket | null = null;
 let eventListeners: Map<string, Set<(data: any) => void>> = new Map();
 
 // Server URL
-const SERVER_URL = import.meta.env.VITE_WS_SERVER_URL || 'ws://localhost:3000';
+const SERVER_URL = import.meta.env.DEV 
+  ? 'ws://localhost:3000' 
+  : import.meta.env.VITE_WEBSOCKET_URL || 'wss://your-websocket-service-url.up.railway.app';
 
 // Store the received events for debugging
 export const lastEvents: Writable<{type: string, timestamp: Date}[]> = writable([]);
@@ -46,6 +48,7 @@ export function connect(gameCode: string): Promise<SocketConnection | null> {
       
       // Create new WebSocket connection
       const url = gameCode ? `${SERVER_URL}?gameCode=${gameCode}` : SERVER_URL;
+      
       socket = new WebSocket(url) as ExtendedWebSocket;
       
       // Connection opened
