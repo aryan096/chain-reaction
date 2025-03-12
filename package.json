@@ -11,7 +11,13 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"lint": "prettier --check . && eslint .",
+		"build:server": "cd server && npm run build:full",
+		"dev:server": "cd server && npm run dev",
+		"install:server": "cd server && npm install",
+		"dev:all": "concurrently \"npm run dev\" \"npm run dev:server\"",
+		"build:all": "npm run build && npm run build:server",
+		"start:all": "concurrently \"npm run preview\" \"cd server && npm run start\""
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
@@ -22,6 +28,7 @@
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"@tailwindcss/vite": "^4.0.0",
+		"concurrently": "^8.2.0",
 		"eslint": "^9.18.0",
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-svelte": "^3.0.0",

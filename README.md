@@ -1,38 +1,78 @@
-# sv
+# Chain Reaction Game
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A multiplayer Chain Reaction game built with SvelteKit, WebSockets, and TailwindCSS.
 
-## Creating a project
+## Getting Started
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Setting up the project
+
+1. Clone this repository
+2. Install dependencies:
 
 ```bash
-# create a new project in the current directory
-npx sv create
+# Install client dependencies
+npm install
 
-# create a new project in my-app
-npx sv create my-app
+# Install server dependencies
+npm run install:server
 ```
 
-## Developing
+### Running the application for local testing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+To run both the client and server simultaneously:
 
 ```bash
+npm run dev:all
+```
+
+This will start:
+- The SvelteKit application on http://localhost:5173
+- The WebSocket server on port 3000
+
+### Alternative: Run client and server separately
+
+```bash
+# Run the client
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# In another terminal, run the server
+npm run dev:server
 ```
 
-## Building
+### Building for production
 
-To create a production version of your app:
+To build both the client and the server:
 
 ```bash
-npm run build
+# Build the client
+npm run build 
+
+# Build the TypeScript server
+npm run build:server
 ```
 
-You can preview the production build with `npm run preview`.
+## Game Mechanics
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Chain Reaction is a multiplayer strategy game where:
+
+1. Players take turns placing atoms in cells
+2. When a cell reaches its capacity, it "explodes" and distributes atoms to adjacent cells
+3. This can cause chain reactions of explosions
+4. A player who captures all of an opponent's cells wins
+
+## Development
+
+### Client-Side Code
+
+The client is built with SvelteKit and TypeScript. You can find the client-side code in the `src` directory.
+
+### Server-Side Code
+
+The server is built with TypeScript and WebSockets. You can find the server code in the `server` directory:
+- `server.ts` - The main WebSocket server
+- `gameLogic.ts` - Game mechanics implementation
+- `types.ts` - TypeScript interfaces for the server
+
+## Deployment
+
+For deployment, you'll need to set up both the client (SvelteKit) and the WebSocket server on your hosting platform.
