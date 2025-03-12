@@ -1,0 +1,82 @@
+/* Explosion animations for Chain Reaction game */
+
+/* Exploding cell animation */
+@keyframes cellExplode {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 165, 0, 0);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 165, 0, 0);
+  }
+}
+
+/* Atom vibration animation */
+@keyframes atomVibrate {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  25% { transform: translate(-52%, -48%) scale(1.05); }
+  50% { transform: translate(-50%, -52%) scale(1.1); }
+  75% { transform: translate(-48%, -50%) scale(1.05); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Atom explosion animation */
+@keyframes atomExplode {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Chain reaction ripple effect */
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 50px rgba(255, 165, 0, 0);
+  }
+}
+
+/* Pulse animation for atoms about to explode */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Critical state animation - when a cell is one atom away from exploding */
+.critical-atom {
+  animation: pulse 1s infinite;
+}
+
+.exploding-cell {
+  animation: cellExplode 0.5s forwards;
+}
+
+.exploding-atom {
+  animation: atomExplode 0.4s forwards;
+}
+
+/* Add this class to cells that are part of a chain reaction */
+.chain-reaction {
+  animation: ripple 0.8s forwards;
+}
