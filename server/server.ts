@@ -7,7 +7,9 @@ import * as http from 'http';
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
-const server = new WebSocketServer({ port: PORT });
+const server = new WebSocketServer({ 
+  host: '::',
+  port: PORT });
 
 // Game storage
 const games: Map<string, Game> = new Map();

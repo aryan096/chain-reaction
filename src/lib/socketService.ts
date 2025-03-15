@@ -22,7 +22,7 @@ let eventListeners: Map<string, Set<(data: any) => void>> = new Map();
 // Server URL
 const SERVER_URL = import.meta.env.DEV 
   ? 'ws://localhost:3000' 
-  : import.meta.env.VITE_WEBSOCKET_URL || 'wss://chain-reaction-production-7dd0.up.railway.app';
+  : import.meta.env.VITE_WEBSOCKET_URL || 'wss://chain-reaction.railway.internal';
 
 // Store the received events for debugging
 export const lastEvents: Writable<{type: string, timestamp: Date}[]> = writable([]);
