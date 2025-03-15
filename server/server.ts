@@ -6,6 +6,7 @@ import * as url from 'url';
 import * as http from 'http';
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+
 const server = new WebSocketServer({ port: PORT });
 
 // Game storage
