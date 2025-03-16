@@ -29,7 +29,7 @@ npm run dev:all
 
 This will start:
 - The SvelteKit application on http://localhost:5173
-- The WebSocket server on port 443
+- The WebSocket server on port 3000
 
 ### Alternative: Run client and server separately
 
