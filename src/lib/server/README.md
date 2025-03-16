@@ -47,7 +47,7 @@ A basic server could be implemented using Node.js with the `ws` package:
 const WebSocket = require('ws');
 const { v4: uuidv4 } = require('uuid');
 
-const server = new WebSocket.Server({ port: 3000 });
+const server = new WebSocket.Server({ port: 443 });
 const games = new Map();
 const clients = new Map();
 

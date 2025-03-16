@@ -21,7 +21,7 @@ let eventListeners: Map<string, Set<(data: any) => void>> = new Map();
 
 // Server URL
 const SERVER_URL = import.meta.env.DEV 
-  ? 'ws://localhost:3000' 
+  ? 'ws://localhost:443' 
   : import.meta.env.VITE_WEBSOCKET_URL || 'wss://chain-reaction-production-7dd0.up.railway.app';
 
 // Store the received events for debugging

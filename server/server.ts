@@ -5,7 +5,7 @@ import { Client, Game, Player, ExtendedWebSocket, GameSettings } from './types.j
 import * as url from 'url';
 import * as http from 'http';
 
-const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 443;
 
 const server = new WebSocketServer({ port: PORT });
 
