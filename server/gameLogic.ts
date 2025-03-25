@@ -158,13 +158,16 @@ function addAtom(grid: Cell[][], x: number, y: number, playerId: string): void {
   
   // Check if cell should explode
   if (cell.count >= getMaxAtoms(grid, x, y)) {
-    // Reset the cell
+    // Reset the cell when it explodes
     cell.count = 0;
+    // Cell should become unoccupied after explosion
     cell.player = null;
     
     // Spread to adjacent cells - this triggers cascading explosions
     const adjacent = getAdjacentCells(grid, x, y);
     for (const [adjX, adjY] of adjacent) {
+      // Still pass the original player ID for adjacent cells
+      // This ensures chain reactions maintain the right ownership
       addAtom(grid, adjX, adjY, playerId);
     }
   }
