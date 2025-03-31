@@ -110,6 +110,11 @@
     return (Math.random() - 0.5) * 0.2; // Small random variation
   }
   
+  // Generate column labels (A, B, C...)
+  function getColumnLabel(index: number): string {
+    return String.fromCharCode(65 + index);
+  }
+  
   onMount(() => {
     // Clean up old explosions periodically
     const interval = setInterval(() => {
@@ -135,56 +140,76 @@
   {/if}
 </div>
 
-<div class="game-board" style="grid-template-columns: repeat({gridSizeX}, minmax(0, 1fr));">
-  {#each Array(gridSizeY) as _, y}
+<div class="board-container">
+  <!-- Column headers (A, B, C...) -->
+  <div class="column-headers">
+    <div class="corner-spacer"></div>
     {#each Array(gridSizeX) as _, x}
-      {@const cell = grid[x][y]}
-      {@const maxAtoms = getMaxAtoms(x, y)}
-      {@const playerColor = getPlayerColor(cell.player)}
-      {@const isPlayable = isMyTurn && (!cell.player || cell.player === currentPlayer?.id)}
-      {@const exploding = isExploding(x, y)}
-      
-      <div 
-        class="cell relative border border-gray-300 aspect-square rounded-sm flex items-center justify-center
-              {isPlayable ? 'cursor-pointer hover:bg-blue-50' : 'cursor-not-allowed'}
-              {exploding ? 'exploding' : ''}"
-        on:click={() => isPlayable && onCellClick(x, y)}
-      >
-        <!-- Explosion animation overlay -->
-        {#if exploding}
-          <div class="explosion-overlay absolute inset-0" transition:scale={{duration: 400, easing: elasticOut}}></div>
-        {/if}
-        
-        <!-- Atoms -->
-        {#if cell.count > 0}
-          {#each getAtomPositions(cell.count, maxAtoms) as pos, i}
-            <div 
-              class="atom absolute rounded-full shadow-md"
-              in:scale={{
-                delay: i * 100, 
-                duration: 400,
-                easing: elasticOut,
-              }}
-              style="
-                background-color: {playerColor}; 
-                width: {atomSize}px; 
-                height: {atomSize}px;
-                left: calc({pos.x} * 100% + {getRandomOffset()}em);
-                top: calc({pos.y} * 100% + {getRandomOffset()}em);
-                transform: translate(-50%, -50%);
-                z-index: 10;
-              "
-            ></div>
-          {/each}
-        {/if}
-        
-        <!-- Debug info - can be removed in production -->
-        <span class="text-[8px] text-gray-400 absolute bottom-0 right-1">
-          {maxAtoms}
-        </span>
-      </div>
+      <div class="column-label">{getColumnLabel(x)}</div>
     {/each}
-  {/each}
+  </div>
+  
+  <div class="board-with-rows flex flex-row">
+    <!-- Row numbers (1, 2, 3...) -->
+    <div class="row-labels">
+      {#each Array(gridSizeY) as _, y}
+        <div class="row-label">{y + 1}</div>
+      {/each}
+    </div>
+    
+    <!-- The actual game board -->
+    <div class="game-board flex-1" style="grid-template-columns: repeat({gridSizeX}, minmax(0, 1fr));">
+      {#each Array(gridSizeY) as _, y}
+        {#each Array(gridSizeX) as _, x}
+          {@const cell = grid[x][y]}
+          {@const maxAtoms = getMaxAtoms(x, y)}
+          {@const playerColor = getPlayerColor(cell.player)}
+          {@const isPlayable = isMyTurn && (!cell.player || cell.player === currentPlayer?.id)}
+          {@const exploding = isExploding(x, y)}
+          
+          <div 
+            class="cell relative border border-gray-300 aspect-square rounded-sm flex items-center justify-center
+                  {isPlayable ? 'cursor-pointer hover:bg-blue-50' : 'cursor-not-allowed'}
+                  {exploding ? 'exploding' : ''}"
+            on:click={() => isPlayable && onCellClick(x, y)}
+          >
+            <!-- Explosion animation overlay -->
+            {#if exploding}
+              <div class="explosion-overlay absolute inset-0" transition:scale={{duration: 400, easing: elasticOut}}></div>
+            {/if}
+            
+            <!-- Atoms -->
+            {#if cell.count > 0}
+              {#each getAtomPositions(cell.count, maxAtoms) as pos, i}
+                <div 
+                  class="atom absolute rounded-full shadow-md"
+                  in:scale={{
+                    delay: i * 100, 
+                    duration: 400,
+                    easing: elasticOut,
+                  }}
+                  style="
+                    background-color: {playerColor}; 
+                    width: {atomSize}px; 
+                    height: {atomSize}px;
+                    left: calc({pos.x} * 100% + {getRandomOffset()}em);
+                    top: calc({pos.y} * 100% + {getRandomOffset()}em);
+                    transform: translate(-50%, -50%);
+                    z-index: 10;
+                  "
+                ></div>
+              {/each}
+            {/if}
+            
+            <!-- Debug info - can be removed in production -->
+            <span class="text-[8px] text-gray-400 absolute bottom-0 right-1">
+              {maxAtoms}
+            </span>
+          </div>
+        {/each}
+      {/each}
+    </div>
+  </div>
 </div>
 
 <style>
@@ -195,6 +220,50 @@
     padding: 8px;
     border-radius: 8px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .board-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .column-headers {
+    display: flex;
+  }
+  
+  .column-label {
+    flex: 1;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    padding-bottom: 4px;
+  }
+  
+  .corner-spacer {
+    width: 24px;
+  }
+  
+  .board-with-rows {
+    display: flex;
+    align-items: stretch;
+  }
+  
+  .row-labels {
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+    justify-content: space-around;
+    padding: 8px 0;
+  }
+  
+  .row-label {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .cell {
